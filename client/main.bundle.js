@@ -55,7 +55,7 @@ var PostsService = (function () {
     });
     PostsService.prototype.getPosts = function (raNumber, lastName, brand) {
         var data = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* URLSearchParams */]();
-        var abc = 'http://a4a2cdab.ngrok.io/SpringMVC/rest/radetails/' + raNumber + '/' + lastName + '/' + brand + '/';
+        var abc = 'https://a4a2cdab.ngrok.io/SpringMVC/rest/radetails/' + raNumber + '/' + lastName + '/' + brand + '/';
         //const abc = 'https://94e4c87d.ngrok.io/SpringMVC/rest/radetails/'+ raNumber+ '/'+ lastName + '/' + brand + '/';
         /*return this.http.get('https://jsonplaceholder.typicode.com/posts')*/
         /* return this.http.get('http://localhost:8080/SpringMVC/rest/radetails/U568395203/')*/
@@ -67,7 +67,7 @@ var PostsService = (function () {
         console.log("Called from Client" + newClaim.incidentCity + "brand is " + newClaim.rentalAgreementNumber + " policy " + newClaim.policyNumber + " desc " + newClaim.damageDescription);
         var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["c" /* Headers */]({ 'Content-Type': 'application/json' });
         var options = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["d" /* RequestOptions */]({ headers: headers });
-        return this.http.post('http://a4a2cdab.ngrok.io/SpringMVC/rest/radetails/', newClaim, options)
+        return this.http.post('https://a4a2cdab.ngrok.io/SpringMVC/rest/radetails/', newClaim, options)
             .map(function (res) { return res.json(); });
         //.catch(this.handleErrorObservable);
         // .subscribe();
