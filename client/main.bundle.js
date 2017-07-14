@@ -53,9 +53,13 @@ var PostsService = (function () {
         enumerable: true,
         configurable: true
     });
-    PostsService.prototype.getPosts = function (raNumber, lastName, brand) {
+    PostsService.prototype.getPosts = function (raNumber, lastName, brand, claimNumber) {
         var data = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* URLSearchParams */]();
-        var abc = 'https://a4a2cdab.ngrok.io/SpringMVC/rest/radetails/' + raNumber + '/' + lastName + '/' + brand + '/';
+        if (claimNumber == null) {
+            claimNumber = "123";
+        }
+        console.log("claim number value " + claimNumber);
+        var abc = 'https://a4a2cdab.ngrok.io/SpringMVC/rest/radetails/' + raNumber + '/' + lastName + '/' + brand + '/' + claimNumber + '/';
         //const abc = 'https://94e4c87d.ngrok.io/SpringMVC/rest/radetails/'+ raNumber+ '/'+ lastName + '/' + brand + '/';
         /*return this.http.get('https://jsonplaceholder.typicode.com/posts')*/
         /* return this.http.get('http://localhost:8080/SpringMVC/rest/radetails/U568395203/')*/
@@ -607,18 +611,19 @@ var AppComponent = (function () {
     */
     AppComponent.prototype.checkClaim = function (path) {
         var _this = this;
-        if (this.raNumber1 == null || this.lastName1 == null || this.brand == null) {
+        if ((this.raNumber1 == null || this.lastName1 == null || this.brand == null) && this.claimNumber == null) {
             this.blankFields = true;
         }
         else {
             this.postsService.raNumberInput = this.raNumber1;
             this.postsService.brandInput = this.brand;
             this.postsService.lastNameInput = this.lastName1;
+            this.postsService.claimNumberInput = this.claimNumber;
             this.blankFields = false;
             var raNumber = this.raNumber1.toUpperCase();
             if (!(this.raNumber1.charAt(0) == 'U'))
                 raNumber = "U" + this.raNumber1.toUpperCase();
-            this.postsService.getPosts(raNumber, this.lastName1.toUpperCase(), this.brand).subscribe(function (posts) {
+            this.postsService.getPosts(raNumber, this.lastName1.toUpperCase(), this.brand, this.claimNumber).subscribe(function (posts) {
                 _this.posts = posts;
                 _this.postsService.posts = _this.posts;
                 console.log("IN check claim" + _this.posts[0].rentalAgreementNumber);
@@ -658,11 +663,15 @@ var AppComponent = (function () {
         __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"])(), 
         __metadata('design:type', String)
     ], AppComponent.prototype, "brand", void 0);
+    __decorate([
+        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"])(), 
+        __metadata('design:type', String)
+    ], AppComponent.prototype, "claimNumber", void 0);
     AppComponent = __decorate([
         __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
             selector: 'app-root',
             /* templateUrl: './app.component.html',*/
-            template: "\n      <div class=\"jumbotron\">\n    <div class=\"container\">\n   <div class=\"imgwrapper\">\n    <img src=\"AvisBudgetLogo.jpg\" class=\"img-responsive\">\n</div>\n\n<h3 class=\"text-center\">Report Car Accident</h3>\n<div *ngIf=\"blankFields\" class=\"alert alert-danger box-msg\" role=\"alert\">\n        <strong>Please provide valid RA Number, Last Name and Brand</strong>\n</div>\n<div *ngIf=\"lookupFailed\" class=\"alert alert-warning box-msg\" role=\"alert\">\n        <strong>Unable to find rental record for the details provide.</strong> Please validate the RA Number, Last Name and Brand\n</div>\n<div *ngIf=\"validRaNoClaim\" class=\"alert alert-warning box-msg\" role=\"alert\">\n        <strong>No claim is created for given rental details !</strong>\n</div>\n\n<table class=\"table\">\n    <tbody>\n        <tr>\n            <td bgcolor=\"red\" width=\"30%\"><font color=\"white\">Rental Agreement Number</font></td>\n            <td width=\"70%\"><div class=\"input-group\">\n                    <input type=\"text\" class=\"form-control\"\n                        placeholder=\"Enter RA Number\" aria-describedby=\"basic-addon1\" [(ngModel)]=\"raNumber1\" name = \"raNumber1\">\n                </div></td>\n        </tr>\n        \n        <tr>\n            <td bgcolor=\"red\" width=\"30%\"><font color = \"white\">Last Name</font></td>\n            <td width=\"70%\"><div class=\"input-group\">\n                    <input type=\"text\" class=\"form-control\"\n                        placeholder=\"Enter Last Name\" aria-describedby=\"basic-addon1\" [(ngModel)]=\"lastName1\" name = \"lastName\">\n                </div></td>\n        </tr>\n        \n        <tr>\n            <td bgcolor=\"red\" width=\"30%\"><font color = \"white\">Brand</font></td>\n            <td width=\"70%\">\n               <div class=\"form-group btn dropdown-toggle\"  >\n  <select class=\"form-control\" id=\"sel1\" [(ngModel)]=\"brand\" name = \"brand\">\n    <option>Avis</option>\n    <option>Budget</option>\n    <option>Payless</option>\n    <option>Zipcar</option>\n  </select>\n</div> \n            </td>\n        </tr>\n        \n    </tbody>\n</table>\n\n<ul>\n    <div class=\"text-center\">\n        <button id=\"newEventbutton\" name=\"newEventbutton\"\n            class=\"btn btn-default\" (click)=\"checkClaim('new')\">New Incident</button>\n        <button id=\"retreiveClaimButton\" name=\"retreiveClaimButton\" (click)=\"checkClaim('about')\"\n            class=\"btn btn-default\" color= #ffffff >Existing Claim\n            Details</button>\n    </div>\n</ul>\n</div></div>\n\n<router-outlet></router-outlet>\n      ",
+            template: "\n      <div class=\"jumbotron\">\n    <div class=\"container\">\n   <div class=\"imgwrapper\">\n    <img src=\"AvisBudgetLogo.jpg\" class=\"img-responsive\">\n</div>\n\n<h3 class=\"text-center\">Report Car Accident</h3>\n<div *ngIf=\"blankFields\" class=\"alert alert-danger box-msg\" role=\"alert\">\n        <strong>Please provide valid RA Number, Last Name, Brand or Claim Number</strong>\n</div>\n\n<div *ngIf=\"validRaNoClaim\" class=\"alert alert-warning box-msg\" role=\"alert\">\n        <strong>No claim is created for given rental details !</strong>\n</div>\n\n<table class=\"table\">\n    <tbody>\n        <tr>\n            <td bgcolor=\"red\" width=\"30%\"><font color=\"white\">Rental Agreement Number</font></td>\n            <td width=\"70%\"><div class=\"input-group\">\n                    <input type=\"text\" class=\"form-control\"\n                        placeholder=\"Enter RA Number\" aria-describedby=\"basic-addon1\" [(ngModel)]=\"raNumber1\" name = \"raNumber1\">\n                </div></td>\n        </tr>\n        \n        <tr>\n            <td bgcolor=\"red\" width=\"30%\"><font color = \"white\">Last Name</font></td>\n            <td width=\"70%\"><div class=\"input-group\">\n                    <input type=\"text\" class=\"form-control\"\n                        placeholder=\"Enter Last Name\" aria-describedby=\"basic-addon1\" [(ngModel)]=\"lastName1\" name = \"lastName\">\n                </div></td>\n        </tr>\n        \n        <tr>\n<td bgcolor=\"red\" width=\"30%\"><font color = \"white\">Brand</font></td>\n<td width=\"70%\">\n<div class=\"form-group btn dropdown-toggle\" >\n<select class=\"form-control\" id=\"sel1\" [(ngModel)]=\"brand\" name = \"brand\">\n<option>Avis</option>\n<option>Budget</option>\n<option>Payless</option>\n<option>Zipcar</option>\n</select>\n</div> \n</td>\n</tr>\n\n        \n        <tr>\n            <td bgcolor=\"red\" width=\"30%\"><font color = \"white\">Claim Number</font></td>\n            <td width=\"70%\"><div class=\"input-group\">\n                    <input type=\"text\" class=\"form-control\"\n                        placeholder=\"Enter Claim Number\" aria-describedby=\"basic-addon1\" [(ngModel)]=\"claimNumber\" name = \"claimNumber\">\n                </div></td>\n        </tr>\n        \n        \n    </tbody>\n</table>\n\n<ul>\n    <div class=\"text-center\">\n        <button id=\"newEventbutton\" name=\"newEventbutton\"\n            class=\"btn btn-default\" (click)=\"checkClaim('new')\">New Incident</button>\n        <button id=\"retreiveClaimButton\" name=\"retreiveClaimButton\" (click)=\"checkClaim('about')\"\n            class=\"btn btn-default\" color= #ffffff >Existing Claim\n            Details</button>\n    </div>\n</ul>\n</div></div>\n\n<router-outlet></router-outlet>\n      ",
             /*  styleUrls: ['./app.component.css']*/
             styles: [__webpack_require__(271), __webpack_require__(272), __webpack_require__(270), __webpack_require__(268), __webpack_require__(269)],
             providers: [__WEBPACK_IMPORTED_MODULE_1__services_posts_service__["a" /* PostsService */]]
