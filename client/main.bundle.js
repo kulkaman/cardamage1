@@ -616,33 +616,38 @@ var AppComponent = (function () {
     */
     AppComponent.prototype.checkClaim = function (path) {
         var _this = this;
-        if ((this.raNumber1 == null || this.lastName1 == null) && this.claimNumber == null) {
+        /*if ((this.raNumber == null|| this.lastName == null ) && this.claimNumber == null)
+            {
             this.blankFields = true;
-        }
-        else {
-            this.postsService.raNumberInput = this.raNumber1;
-            this.postsService.lastNameInput = this.lastName1;
-            this.postsService.claimNumberInput = this.claimNumber;
-            this.blankFields = false;
-            var raNumber = this.raNumber1;
-            this.postsService.getPosts(raNumber, this.lastName1, this.claimNumber).subscribe(function (posts) {
-                _this.posts = posts;
-                _this.postsService.posts = _this.posts;
-                console.log("IN check claim" + _this.posts[0].rentalAgreementNumber);
-                if (path == 'new' || _this.posts[0].claimNumber != null) {
-                    _this.router.navigate([path]);
-                }
-                else {
-                    _this.validRaNoClaim = true;
-                    _this.posts[0].firstName = "JOHN";
-                    _this.posts[0].lastName = "LEWIS";
-                    _this.router.navigate([path]);
-                }
-            }, function (err) {
-                _this.lookupFailed = true;
+            }else{*/
+        this.postsService.raNumberInput = this.raNumber;
+        this.postsService.lastNameInput = this.lastName;
+        this.postsService.claimNumberInput = this.claimNumber;
+        this.blankFields = false;
+        var raNumber = this.raNumber;
+        this.postsService.getPosts(raNumber, this.lastName, this.claimNumber).subscribe(function (posts) {
+            _this.posts = posts;
+            _this.postsService.posts = _this.posts;
+            console.log("IN check claim" + _this.posts[0].rentalAgreementNumber);
+            if (path == 'new' || _this.posts[0].claimNumber != null) {
                 _this.router.navigate([path]);
-            });
-        }
+            }
+            else {
+                _this.validRaNoClaim = true;
+                _this.posts[0].firstName = "JOHN";
+                _this.posts[0].lastName = "LEWIS";
+                _this.router.navigate([path]);
+            }
+        }, function (err) {
+            _this.lookupFailed = true;
+            _this.router.navigate([path]);
+        });
+        /*
+        if (this.posts.length == 0)
+            {
+            this.blankFields = true;
+            }*/
+        //  }
         /* this.postsService.getPosts(this.posts.raNumber1).subscribe( posts => {
              this.postsBasic = posts;
      }*/
@@ -656,11 +661,11 @@ var AppComponent = (function () {
     __decorate([
         __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"])(), 
         __metadata('design:type', String)
-    ], AppComponent.prototype, "raNumber1", void 0);
+    ], AppComponent.prototype, "raNumber", void 0);
     __decorate([
         __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"])(), 
         __metadata('design:type', String)
-    ], AppComponent.prototype, "lastName1", void 0);
+    ], AppComponent.prototype, "lastName", void 0);
     __decorate([
         __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"])(), 
         __metadata('design:type', String)
@@ -669,7 +674,7 @@ var AppComponent = (function () {
         __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
             selector: 'app-root',
             /* templateUrl: './app.component.html',*/
-            template: "\n      <div class=\"jumbotron\">\n    <div class=\"container\">\n   <div class=\"imgwrapper\">\n    <img src=\"Avis.png\" class=\"img-responsive\">\n</div>\n\n<h3 class=\"text-center\">Report Car Accident</h3>\n<div *ngIf=\"blankFields\" class=\"alert alert-danger box-msg\" role=\"alert\">\n        <strong>Please provide valid RA Number, Last Name or Claim Number</strong>\n</div>\n\n\n<table class=\"table\">\n    <tbody>\n        <tr>\n            <td bgcolor=\"red\" width=\"30%\"><font color=\"white\">Rental Agreement Number</font></td>\n            <td width=\"70%\"><div class=\"input-group\">\n                    <input type=\"text\" class=\"form-control\" placeholder=\"Enter RA Number\" \n                        aria-describedby=\"basic-addon1\" name = \"raNumber1\" value=\"U12345567\">\n                </div></td>\n        </tr>\n        \n        <tr>\n            <td bgcolor=\"red\" width=\"30%\"><font color = \"white\">Last Name</font></td>\n            <td width=\"70%\"><div class=\"input-group\">\n                    <input type=\"text\" class=\"form-control\"\n                        placeholder=\"Enter Last Name\" aria-describedby=\"basic-addon1\" name = \"lastName\" value = \"Smith\">\n                </div></td>\n        </tr>\n        \n        <tr>\n            <td bgcolor=\"red\" width=\"30%\"><font color = \"white\">Claim Number</font></td>\n            <td width=\"70%\"><div class=\"input-group\">\n                    <input type=\"text\" class=\"form-control\"\n                        placeholder=\"Enter Claim Number\" aria-describedby=\"basic-addon1\" [(ngModel)]=\"claimNumber\" name = \"claimNumber\">\n                </div></td>\n        </tr>\n        \n        \n    </tbody>\n</table>\n\n<ul>\n    <div class=\"text-center\">\n        <button id=\"newEventbutton\" name=\"newEventbutton\"\n            class=\"btn btn-default\" (click)=\"checkClaim('new')\">New Incident</button>\n        <button id=\"retreiveClaimButton\" name=\"retreiveClaimButton\" (click)=\"checkClaim('about')\"\n            class=\"btn btn-default\" color= #ffffff >Existing Claim\n            Details</button>\n    </div>\n</ul>\n</div></div>\n\n<router-outlet></router-outlet>\n      ",
+            template: "\n      <div class=\"jumbotron\">\n    <div class=\"container\">\n   <div class=\"imgwrapper\">\n    <img src=\"Avis.png\" class=\"img-responsive\">\n</div>\n\n<h3 class=\"text-center\">Report Car Accident</h3>\n<div *ngIf=\"blankFields\" class=\"alert alert-danger box-msg\" role=\"alert\">\n        <strong>Please provide valid RA Number, Last Name or Claim Number</strong>\n</div>\n\n\n<table class=\"table\">\n    <tbody>\n        <tr>\n            <td bgcolor=\"red\" width=\"30%\"><font color=\"white\">Rental Agreement Number</font></td>\n            <td width=\"70%\"><div class=\"input-group\">\n                    <input type=\"text\" class=\"form-control\" placeholder=\"Enter RA Number\" \n                        aria-describedby=\"basic-addon1\" name = \"raNumber\" value=\"U12345567\">\n                </div></td>\n        </tr>\n        \n        <tr>\n            <td bgcolor=\"red\" width=\"30%\"><font color = \"white\">Last Name</font></td>\n            <td width=\"70%\"><div class=\"input-group\">\n                    <input type=\"text\" class=\"form-control\"\n                        placeholder=\"Enter Last Name\" aria-describedby=\"basic-addon1\" name = \"lastName\" value = \"Smith\">\n                </div></td>\n        </tr>\n        \n        <tr>\n            <td bgcolor=\"red\" width=\"30%\"><font color = \"white\">Claim Number</font></td>\n            <td width=\"70%\"><div class=\"input-group\">\n                    <input type=\"text\" class=\"form-control\"\n                        placeholder=\"Enter Claim Number\" aria-describedby=\"basic-addon1\" [(ngModel)]=\"claimNumber\" name = \"claimNumber\">\n                </div></td>\n        </tr>\n        \n        \n    </tbody>\n</table>\n\n<ul>\n    <div class=\"text-center\">\n        <button id=\"newEventbutton\" name=\"newEventbutton\"\n            class=\"btn btn-default\" (click)=\"checkClaim('new')\">New Incident</button>\n        <button id=\"retreiveClaimButton\" name=\"retreiveClaimButton\" (click)=\"checkClaim('about')\"\n            class=\"btn btn-default\" color= #ffffff >Existing Claim\n            Details</button>\n    </div>\n</ul>\n</div></div>\n\n<router-outlet></router-outlet>\n      ",
             /*  styleUrls: ['./app.component.css']*/
             styles: [__webpack_require__(271), __webpack_require__(272), __webpack_require__(270), __webpack_require__(268), __webpack_require__(269)],
             providers: [__WEBPACK_IMPORTED_MODULE_1__services_posts_service__["a" /* PostsService */]]
