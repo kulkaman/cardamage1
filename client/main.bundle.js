@@ -618,10 +618,8 @@ var AppComponent = (function () {
             this.postsService.lastNameInput = this.lastName1;
             this.postsService.claimNumberInput = this.claimNumber;
             this.blankFields = false;
-            var raNumber = this.raNumber1.toUpperCase();
-            if (!(this.raNumber1.charAt(0) == 'U'))
-                raNumber = "U" + this.raNumber1.toUpperCase();
-            this.postsService.getPosts(raNumber, this.lastName1.toUpperCase(), this.claimNumber).subscribe(function (posts) {
+            var raNumber = this.raNumber1;
+            this.postsService.getPosts(raNumber, this.lastName1, this.claimNumber).subscribe(function (posts) {
                 _this.posts = posts;
                 _this.postsService.posts = _this.posts;
                 console.log("IN check claim" + _this.posts[0].rentalAgreementNumber);
