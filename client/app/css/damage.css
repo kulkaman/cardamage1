@@ -42,11 +42,15 @@ body {
 	border-color: #d4002a;
 }
 
+.panel-default {
+	padding: 10px 15px;
+}
+
 .panel-group .panel-heading a {
     display: block;
     position: relative;
 	text-decoration: none;
-
+ 	
 }
 
 .panel-group .panel-heading a :visited{
@@ -54,13 +58,20 @@ body {
 }
 
 .panel-group .panel-heading a:before {
-	content: url('../app/images/icon_collapse.svg') ;  
+	/* content: url('../app/images/icon_collapse.svg') ;   */
+	content: url('../images/icon_collapse.svg') ;
   text-align:center;
 }
 
 .panel-group .panel-heading a.collapsed:before {
-    content: url('../app/images/icon_expand.svg') ;
+    content: url('../images/icon_expand.svg') ;
 text-align:center;
+}
+
+.bg-primarya{
+	background-color: #c61729;
+	padding: 10px 15px;
+	color: white;
 }
 
 
