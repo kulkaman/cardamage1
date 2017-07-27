@@ -41,6 +41,12 @@
   	  penColor: 'rgb(0, 0, 0)'
   	});
     
+    $('#accordion').on('shown.bs.collapse', '.panel-default', function (e) {
+    	$('html,body').animate({
+    	scrollTop: $(this).offset().top
+    	}, 500); 
+    	});
+
     </script>
         
 </html>
