@@ -83,7 +83,7 @@ var PostsService = (function () {
         console.error(error.message || error);
         return __WEBPACK_IMPORTED_MODULE_3_rxjs__["Observable"].throw(error.message || error);
     };
-    PostsService.url = 'http://localhost:8080';
+    PostsService.url = 'https://localhost:8080';
     PostsService = __decorate([
         __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Injectable"])(), 
         __metadata('design:paramtypes', [(typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_http__["e" /* Http */] !== 'undefined' && __WEBPACK_IMPORTED_MODULE_1__angular_http__["e" /* Http */]) === 'function' && _a) || Object])
