@@ -68,10 +68,18 @@ body {
 text-align:center;
 }
 
+/* .panel-title1 {
+text-align:center;
+} */
+
 .bg-primarya{
 	background-color: #c61729;
 	padding: 10px 15px;
 	color: white;
+	font-family: Calibri
 }
 
+.imageMap {
+height : 346px !important ;
+}
 
