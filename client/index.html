@@ -46,7 +46,41 @@
     	scrollTop: $(this).offset().top
     	}, 500); 
     	});
+    
+    var app = angular.module('app', []);
 
+    app.controller('imgMapCtrl', function($scope, $http) {
+      $scope.auto_parts = [{
+        "shape": "circle",
+        "type": "kolo_przod",
+        "coords": "193,342,68"
+      }, {
+        "shape": "circle",
+        "type": "kolo_tyl",
+        "coords": "743,341,68"
+      }, {
+        "shape": "poly",
+        "type": "okno",
+        "coords": "380,220,494,213,512,149,452,157,421,165,369,192,384,199"
+      }, {
+        "shape": "poly",
+        "type": "okno",
+        "coords": "536,211,692,202,700,173,664,162,599,152,544,149"
+      }, {
+        "shape": "poly",
+        "type": "drzwi",
+        "coords": "301,355,510,354,504,334,510,236,516,213,528,144,462,149,419,162,361,190,300,231,293,253,292,312"
+      }, {
+        "shape": "poly",
+        "type": "drzwi",
+        "coords": "510,352,632,349,702,252,712,211,708,202,716,176,657,156,586,145,528,145,516,213,510,235,504,333"
+      }]
+
+
+      $scope.partClicked = function(arg) {
+        alert(arg + ' clicked');
+      }
+    });
     </script>
         
 </html>
