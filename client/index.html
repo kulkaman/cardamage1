@@ -82,6 +82,18 @@
         alert(arg + ' clicked');
       }
     });
+    
+    webView.setWebViewClient(new WebViewClient() {
+        public boolean shouldOverrideUrlLoading(WebView view, String url) {
+            if (url.contains("tel:")) {
+                if (url.startsWith("tel:")) {
+                    Intent intent = new Intent(Intent.ACTION_DIAL, Uri.parse(url));
+                    startActivity(intent);
+                }
+                return true;
+            }
+       }
+});
     </script>
         
 </html>
