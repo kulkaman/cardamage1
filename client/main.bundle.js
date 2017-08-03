@@ -69,7 +69,7 @@ var PostsService = (function () {
         var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["c" /* Headers */]({ 'Content-Type': 'application/json' });
         var options = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["d" /* RequestOptions */]({ headers: headers });
         console.log("loc: " + PostsService.url);
-        return this.http.put(PostsService.url + '/SpringMVC/rest/radetails/', newClaim, options)
+        return this.http.post(PostsService.url + '/SpringMVC/rest/radetails/update', newClaim, options)
             .map(function (res) { return res.json(); });
         //.catch(this.handleErrorObservable);
         // .subscribe();
@@ -83,7 +83,7 @@ var PostsService = (function () {
         console.error(error.message || error);
         return __WEBPACK_IMPORTED_MODULE_3_rxjs__["Observable"].throw(error.message || error);
     };
-    // public static url='http://localhost:8080';
+    //public static url='http://localhost:8080';
     PostsService.url = 'https://fed80b0f.ngrok.io';
     PostsService = __decorate([
         __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Injectable"])(), 
