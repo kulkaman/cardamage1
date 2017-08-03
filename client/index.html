@@ -6,6 +6,9 @@
   <base href="/">
   <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
   
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" /> 
+  
   <link rel="icon" type="image/x-icon" href="favicon.ico">
   
   
@@ -94,6 +97,15 @@
             }
        }
 });
+    
+    if (window.navigator.standalone == true) {
+    	 document.write('<p>Welcome Home</p>');
+    	 console.log('Hey');
+    	}else{
+    	 document.write('<p>Tap the + button and choose "Add to Home Screen"</p>');
+    	 document.write('<link rel="apple-touch-icon-precomposed" href="icon@2x.png"/>');
+    	 console.log('Hii');
+    	}
     </script>
         
 </html>
