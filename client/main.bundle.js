@@ -463,14 +463,13 @@ var UserComponent = (function () {
         // take snapshot and get image data
         Webcam.snap(function (data_uri) {
             // display results in page
-            var cam1Id1 = "Hey";
+            this.cam1Id = data_uri;
             document.getElementById(camerID).innerHTML =
                 '<img src="' + data_uri + '"/>';
             if (!that._newClaim) {
                 console.log("Inside take_snapshot - setting claim");
             }
             //that._newClaim[camerID] = data_uri.replace(/^data\:image\/\w+\;base64\,/, '');
-            this.cam1Id = cam1Id1;
         });
     };
     UserComponent.prototype.toggleRenter = function () {
