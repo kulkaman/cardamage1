@@ -459,19 +459,30 @@ var UserComponent = (function () {
     };
     /*constructor(public http:Http){}*/
     UserComponent.prototype.take_snapshot = function (camerID) {
-        var that = this;
+        /* var that = this;
         // take snapshot and get image data
+        Webcam.snap(function (this, data_uri) {
+            // display results in page
+            document.getElementById(camerID).innerHTML =
+                '<img src="' + data_uri + '"/>';
+            
+            if ( !that._newClaim ) {
+                console.log ("Inside take_snapshot - setting claim");
+                //that._newClaim = new Claim();
+                }
+                //that._newClaim[camerID] = data_uri.replace(/^data\:image\/\w+\;base64\,/, '');
+            
+            //encodeURIComponent(data_uri);
+            that.cam1Id = data_uri;
+         
+
+
+        });*/
         Webcam.snap(function (data_uri) {
             // display results in page
             document.getElementById(camerID).innerHTML =
                 '<img src="' + data_uri + '"/>';
-            /*            if ( !that._newClaim ) {
-                            console.log ("Inside take_snapshot - setting claim");
-                            //that._newClaim = new Claim();
-                            }*/
-            //that._newClaim[camerID] = data_uri.replace(/^data\:image\/\w+\;base64\,/, '');
-            //encodeURIComponent(data_uri);
-            that.cam1Id = data_uri;
+            this.cam1Id = data_uri;
         });
     };
     UserComponent.prototype.toggleRenter = function () {
