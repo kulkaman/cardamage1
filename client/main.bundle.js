@@ -468,7 +468,6 @@ var UserComponent = (function () {
             //  Webcam.off("off");
             if (!that._newClaim) {
                 console.log("Inside take_snapshot - setting claim");
-                that._newClaim = new Claim();
             }
             that._newClaim[camerID] = data_uri.replace(/^data\:image\/\w+\;base64\,/, '');
             /*Webcam.upload( data_uri, 'http://localhost:8080/SpringMVC/rest/radetails/update/images/', function(code, text) {
@@ -491,7 +490,7 @@ var UserComponent = (function () {
         var _this = this;
         this.successClaim = true;
         console.log(this.incidentCity + " " + this.incidentState);
-        // 
+        //this._newClaim = new Claim();
         if (this.rentalAgreementNumber == null) {
             this.rentalAgreementNumber = "367326223";
             this.firstName = "John";
