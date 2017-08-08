@@ -463,7 +463,7 @@ var UserComponent = (function () {
         // take snapshot and get image data
         Webcam.snap(function (data_uri) {
             // display results in page
-            this.cam1Id = data_uri;
+            alert("uri is " + data_uri);
             document.getElementById(camerID).innerHTML =
                 '<img src="' + data_uri + '"/>';
             if (!that._newClaim) {
