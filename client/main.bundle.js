@@ -398,6 +398,8 @@ var UserComponent = (function () {
             this.rentalAgreementNumber = this.postsService.raNumberInput;
             this.lastName = this.postsService.lastNameInput;
             //this.pdfSrc = "http://localhost:8080/SpringMVC/pdf/"+this.rentalAgreementNumber+"_file.pdf";
+            if (this.rentalAgreementNumber == null || this.rentalAgreementNumber == "undefined")
+                this.rentalAgreementNumber = "367326223";
             this.pdfSrc = "https://ae001f28.ngrok.io/SpringMVC/pdf/" + this.rentalAgreementNumber + "_file.pdf";
         }
         if (this.coDate == null) {
