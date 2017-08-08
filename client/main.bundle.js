@@ -472,9 +472,7 @@ var UserComponent = (function () {
             }
             //that._newClaim[camerID] = data_uri.replace(/^data\:image\/\w+\;base64\,/, '');
             //encodeURIComponent(data_uri);
-            that._newClaim[camerID] = encodeURIComponent(data_uri);
-            console.log("cam url" + encodeURIComponent(data_uri));
-            //that._newClaim[camerID] = data_uri.replace(/^data:image\/[a-z]+;base64,/, '');
+            that.cam1Id = data_uri;
         });
     };
     UserComponent.prototype.toggleRenter = function () {
@@ -505,7 +503,7 @@ var UserComponent = (function () {
             this.lastName = this.postsService.lastNameInput;
             console.log("RA was not null");
         }
-        console.log("Incident " + this.incidentCity);
+        console.log("Incident " + this.incidentCity + "cam1Id " + this.cam1Id);
         this._newClaim.incidentCity = this.incidentCity;
         this._newClaim.incidentState = this.incidentState;
         this._newClaim.zipCode = this.incidentZipCode;
@@ -530,6 +528,7 @@ var UserComponent = (function () {
         this._newClaim.lastName = this.lastName;
         this._newClaim.firstName = this.firstName;
         this._newClaim.damageSeverity = this.damageSeverity;
+        this._newClaim.camera1 = this.cam1Id;
         console.log("RA : " + this._newClaim.rentalAgreementNumber + " and LN: " + this._newClaim.lastName);
         /*this.postsService.getClaimNumberPosts(this._newClaim).subscribe(
             function(response) {
