@@ -468,10 +468,10 @@ var UserComponent = (function () {
             //  Webcam.off("off");
             if (!that._newClaim) {
                 console.log("Inside take_snapshot - setting claim");
+                that._newClaim = new Claim();
             }
-            that._newClaim[camerID] = data_uri.replace(/^data\:image\/\w+\;base64\,/, '');
-            /*Webcam.upload( data_uri, 'http://localhost:8080/SpringMVC/rest/radetails/update/images/', function(code, text) {
-                console.log("code is "+ code+ "  and text is "+text);*/
+            //that._newClaim[camerID] = data_uri.replace(/^data\:image\/\w+\;base64\,/, ''); 
+            that._newClaim[camerID] = data_uri.replace(/^data:image\/[a-z]+;base64,/, '');
         });
     };
     UserComponent.prototype.toggleRenter = function () {
