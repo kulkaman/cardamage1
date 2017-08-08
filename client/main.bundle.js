@@ -382,6 +382,7 @@ var UserComponent = (function () {
             'canvasHeight': 30
         };
         this.posts = postsService.posts;
+        this._newClaim = new Claim();
         this.router = router;
         console.log("router value in claim " + this.router);
         /*    this.flashlight.switchOn();*/
@@ -411,7 +412,6 @@ var UserComponent = (function () {
             this.lastName = this.postsService.lastNameInput;
         }
         this.whatTime = new Date().toString();
-        //   this._newClaim = new Claim();
     }
     Object.defineProperty(UserComponent.prototype, "posts", {
         get: function () {
