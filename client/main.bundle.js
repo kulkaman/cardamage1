@@ -470,8 +470,8 @@ var UserComponent = (function () {
                 console.log("Inside take_snapshot - setting claim");
             }
             //that._newClaim[camerID] = data_uri.replace(/^data\:image\/\w+\;base64\,/, '');
-            //encodeURIComponent(data_uri);
         });
+        this.cam1Id = that.cam1Id;
     };
     UserComponent.prototype.toggleRenter = function () {
         this.operatorNotRenter = !this.operatorNotRenter;
