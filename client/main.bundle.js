@@ -463,6 +463,7 @@ var UserComponent = (function () {
         // take snapshot and get image data
         Webcam.snap(function (data_uri) {
             // display results in page
+            that.cam1Id = "Hey";
             document.getElementById(camerID).innerHTML =
                 '<img src="' + data_uri + '"/>';
             if (!that._newClaim) {
@@ -470,7 +471,6 @@ var UserComponent = (function () {
             }
             //that._newClaim[camerID] = data_uri.replace(/^data\:image\/\w+\;base64\,/, '');
             //encodeURIComponent(data_uri);
-            that.cam1Id = "Hey";
         });
     };
     UserComponent.prototype.toggleRenter = function () {
