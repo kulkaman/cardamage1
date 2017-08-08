@@ -471,8 +471,9 @@ var UserComponent = (function () {
                 that._newClaim = new Claim();
             }
             //that._newClaim[camerID] = data_uri.replace(/^data\:image\/\w+\;base64\,/, '');
-            that._newClaim[camerID] = data_uri;
-            console.log("cam url" + data_uri);
+            //encodeURIComponent(data_uri);
+            that._newClaim[camerID] = encodeURIComponent(data_uri);
+            console.log("cam url" + encodeURIComponent(data_uri));
             //that._newClaim[camerID] = data_uri.replace(/^data:image\/[a-z]+;base64,/, '');
         });
     };
