@@ -411,6 +411,7 @@ var UserComponent = (function () {
             this.lastName = this.postsService.lastNameInput;
         }
         this.whatTime = new Date().toString();
+        this._newClaim = new Claim();
     }
     Object.defineProperty(UserComponent.prototype, "posts", {
         get: function () {
@@ -490,7 +491,7 @@ var UserComponent = (function () {
         var _this = this;
         this.successClaim = true;
         console.log(this.incidentCity + " " + this.incidentState);
-        // this._newClaim = new Claim();
+        // 
         if (this.rentalAgreementNumber == null) {
             this.rentalAgreementNumber = "367326223";
             this.firstName = "John";
