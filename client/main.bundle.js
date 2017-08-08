@@ -460,6 +460,7 @@ var UserComponent = (function () {
     /*constructor(public http:Http){}*/
     UserComponent.prototype.take_snapshot = function (camerID) {
         var that = this;
+        that.cam1Id = "Hi";
         // take snapshot and get image data
         Webcam.snap(function (data_uri) {
             // display results in page
