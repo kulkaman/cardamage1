@@ -465,11 +465,10 @@ var UserComponent = (function () {
             // display results in page
             document.getElementById(camerID).innerHTML =
                 '<img src="' + data_uri + '"/>';
-            //  Webcam.off("off");
-            if (!that._newClaim) {
-                console.log("Inside take_snapshot - setting claim");
-                that._newClaim = new Claim();
-            }
+            /*            if ( !that._newClaim ) {
+                            console.log ("Inside take_snapshot - setting claim");
+                            //that._newClaim = new Claim();
+                            }*/
             //that._newClaim[camerID] = data_uri.replace(/^data\:image\/\w+\;base64\,/, '');
             //encodeURIComponent(data_uri);
             that.cam1Id = data_uri;
