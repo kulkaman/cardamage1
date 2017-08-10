@@ -104,7 +104,7 @@ var PostsService = (function () {
         return __WEBPACK_IMPORTED_MODULE_3_rxjs__["Observable"].throw(error.message || error);
     };
     //public static url='http://localhost:8080';
-    PostsService.url = 'https://ae001f28.ngrok.io';
+    PostsService.url = 'https://d69cb16c.ngrok.io';
     PostsService = __decorate([
         __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Injectable"])(), 
         __metadata('design:paramtypes', [(typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_http__["e" /* Http */] !== 'undefined' && __WEBPACK_IMPORTED_MODULE_1__angular_http__["e" /* Http */]) === 'function' && _a) || Object])
@@ -401,7 +401,7 @@ var UserComponent = (function () {
             //this.pdfSrc = "http://localhost:8080/SpringMVC/pdf/"+this.rentalAgreementNumber+"_file.pdf";
             if (this.rentalAgreementNumber == null || this.rentalAgreementNumber == "undefined")
                 this.rentalAgreementNumber = "367326223";
-            this.pdfSrc = "https://ae001f28.ngrok.io/SpringMVC/pdf/" + this.rentalAgreementNumber + "_file.pdf";
+            this.pdfSrc = "https://d69cb16c.ngrok.io/SpringMVC/pdf/" + this.rentalAgreementNumber + "_file.pdf";
         }
         if (this.coDate == null) {
             this.makeModelDesc = "HONDA CIVIC 4DR";
@@ -469,8 +469,9 @@ var UserComponent = (function () {
                 '<img src="' + data_uri + '"/>';
             if (!that._newClaim) {
                 console.log("Inside take_snapshot - setting claim");
+                that._newClaim = new Claim();
             }
-            //that._newClaim[camerID] = data_uri.replace(/^data\:image\/\w+\;base64\,/, '');
+            that._newClaim[camerID] = data_uri.replace(/^data\:image\/\w+\;base64\,/, '');
         });
     };
     UserComponent.prototype.toggleRenter = function () {
@@ -526,7 +527,7 @@ var UserComponent = (function () {
         this._newClaim.lastName = this.lastName;
         this._newClaim.firstName = this.firstName;
         this._newClaim.damageSeverity = this.damageSeverity;
-        this._newClaim.camera1 = this.cam1Id;
+        //this._newClaim.camera1 = this.cam1Id;
         console.log("RA : " + this._newClaim.rentalAgreementNumber + " and LN: " + this._newClaim.lastName);
         /*this.postsService.getClaimNumberPosts(this._newClaim).subscribe(
             function(response) {
