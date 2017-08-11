@@ -104,7 +104,7 @@ var PostsService = (function () {
         return __WEBPACK_IMPORTED_MODULE_3_rxjs__["Observable"].throw(error.message || error);
     };
     //public static url='http://localhost:8080';
-    PostsService.url = 'https://d69cb16c.ngrok.io';
+    PostsService.url = 'https://0a5c78f5.ngrok.io';
     PostsService = __decorate([
         __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Injectable"])(), 
         __metadata('design:paramtypes', [(typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_http__["e" /* Http */] !== 'undefined' && __WEBPACK_IMPORTED_MODULE_1__angular_http__["e" /* Http */]) === 'function' && _a) || Object])
@@ -401,7 +401,7 @@ var UserComponent = (function () {
             //this.pdfSrc = "http://localhost:8080/SpringMVC/pdf/"+this.rentalAgreementNumber+"_file.pdf";
             if (this.rentalAgreementNumber == null || this.rentalAgreementNumber == "undefined")
                 this.rentalAgreementNumber = "367326223";
-            this.pdfSrc = "https://d69cb16c.ngrok.io/SpringMVC/pdf/" + this.rentalAgreementNumber + "_file.pdf";
+            this.pdfSrc = "https://0a5c78f5.ngrok.io/SpringMVC/pdf/" + this.rentalAgreementNumber + "_file.pdf";
         }
         if (this.coDate == null) {
             this.makeModelDesc = "HONDA CIVIC 4DR";
